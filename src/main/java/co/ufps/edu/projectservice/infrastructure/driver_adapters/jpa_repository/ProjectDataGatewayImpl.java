@@ -1,9 +1,7 @@
-package co.ufps.edu.projectservice.infrastructure.driver_adapters.gateway_impl;
+package co.ufps.edu.projectservice.infrastructure.driver_adapters.jpa_repository;
 
 import co.ufps.edu.projectservice.domain.model.Project;
 import co.ufps.edu.projectservice.domain.model.gateways.ProjectGateway;
-import co.ufps.edu.projectservice.infrastructure.driver_adapters.data_entities.ProjectData;
-import co.ufps.edu.projectservice.infrastructure.driver_adapters.jpa_repository.ProjectDataJpaRepository;
 import co.ufps.edu.projectservice.infrastructure.mapper.MapperProject;
 import org.springframework.stereotype.Repository;
 

@@ -1,10 +1,11 @@
-package co.ufps.edu.projectservice.infrastructure.driver_adapters.data_entities;
+package co.ufps.edu.projectservice.infrastructure.driver_adapters.jpa_repository;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "project")
@@ -12,9 +13,7 @@ public class ProjectData {
 
     @Id
     private Long id;
-    @Column(length = 100)
     private String title;
-    @Column(length = 500)
     private String description;
     private LocalDateTime dateCreation;
     private LocalDateTime dateFinished;

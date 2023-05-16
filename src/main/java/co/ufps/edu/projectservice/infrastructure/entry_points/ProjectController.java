@@ -2,7 +2,6 @@ package co.ufps.edu.projectservice.infrastructure.entry_points;
 
 import co.ufps.edu.projectservice.domain.model.Project;
 import co.ufps.edu.projectservice.domain.useCase.ProjectUseCase;
-import co.ufps.edu.projectservice.domain.useCase.TaskUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +13,9 @@ import java.util.List;
 public class ProjectController {
 
     private final ProjectUseCase projectUseCase;
-    private final TaskUseCase taskUseCase;
 
-    public ProjectController(ProjectUseCase projectUseCase, TaskUseCase taskUseCase) {
+    public ProjectController(ProjectUseCase projectUseCase) {
         this.projectUseCase = projectUseCase;
-        this.taskUseCase = taskUseCase;
     }
 
     @RequestMapping(path = "/registerNewProject",method = RequestMethod.PUT)
@@ -59,16 +56,6 @@ public class ProjectController {
             return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(projects,HttpStatus.OK);
-    }
-
-    @RequestMapping(path = "/getAllTasksById",method = RequestMethod.POST)
-    public ResponseEntity<Object> findAllTaskByProject(@RequestBody Long taskId){
-        var tasks=taskUseCase.findAllTaskById(taskId);
-        if (tasks==null){
-            String message="The requested resource was not found";
-            return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(tasks,HttpStatus.OK);
     }
 
 }
