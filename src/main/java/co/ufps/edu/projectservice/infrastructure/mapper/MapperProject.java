@@ -1,7 +1,7 @@
 package co.ufps.edu.projectservice.infrastructure.mapper;
 
 import co.ufps.edu.projectservice.domain.model.Project;
-import co.ufps.edu.projectservice.infrastructure.driver_adapters.jpa_repository.ProjectData;
+import co.ufps.edu.projectservice.infrastructure.driver_adapters.data_entities.ProjectData;
 import org.mapstruct.Mapper;
 
 import java.util.List;

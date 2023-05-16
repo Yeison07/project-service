@@ -10,15 +10,17 @@ public class Project {
     private String description;
     private LocalDateTime dateCreation;
     private LocalDateTime dateFinished;
+    private List<Task>tasks;
 
     public Project() {
     }
 
-    public Project(String title, String description, LocalDateTime dateCreation, LocalDateTime dateFinished) {
+    public Project(String title, String description, LocalDateTime dateCreation, LocalDateTime dateFinished, List<Task> tasks) {
         this.title = title;
         this.description = description;
         this.dateCreation = dateCreation;
         this.dateFinished = dateFinished;
+        this.tasks = tasks;
     }
 
     public String getTitle() {
@@ -61,13 +63,13 @@ public class Project {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Project{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", dateCreation=" + dateCreation +
-                ", dateFinished=" + dateFinished +
-                '}';
+    public List<Task> getTasks() {
+        return tasks;
     }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+
 }
