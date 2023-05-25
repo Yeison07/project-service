@@ -44,6 +44,6 @@ public class TaskDataGatewayImpl implements TaskGateway {
 
     @Override
     public List<Task> findAllTasksById(Long taskId) {
-        return mapperTask.toListTask(repository.findAllByIdIn(taskId));
+        return mapperTask.toListTask(repository.findAllById(taskId));
     }
 }

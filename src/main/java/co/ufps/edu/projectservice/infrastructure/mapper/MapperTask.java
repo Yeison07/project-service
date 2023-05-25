@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface MapperTask {
+
     Task toTask(TaskData taskData);
     TaskData toTaskData(Task task);
     List<Task>toListTask(List<TaskData>taskDataList);

@@ -7,6 +7,7 @@ import co.ufps.edu.projectservice.infrastructure.driver_adapters.jpa_repository.
 import co.ufps.edu.projectservice.infrastructure.mapper.MapperProject;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -26,6 +27,7 @@ public class ProjectDataGatewayImpl implements ProjectGateway {
             return null;
         }
         ProjectData projectData=mapperProject.toProjectData(project);
+        projectData.setDateCreation(LocalDateTime.now());
         return mapperProject.toProject(repository.save(projectData));
     }
 

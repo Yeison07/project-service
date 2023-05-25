@@ -21,13 +21,14 @@ public class ProjectController {
         this.taskUseCase = taskUseCase;
     }
 
-    @RequestMapping(path = "/registerNewProject",method = RequestMethod.PUT)
+    @RequestMapping(path = "/registerNewProject",method = RequestMethod.POST)
     public ResponseEntity<Object>registerNewProject(@RequestBody Project project){
         if (project==null){
             String message="The project submit is empty or has incomplete fields";
             return new ResponseEntity<>(message,HttpStatus.CREATED);
 
         }
+
         return new ResponseEntity<>(projectUseCase.saveProject(project),HttpStatus.CREATED);
     }
 
