@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/projects")
+@CrossOrigin
 public class ProjectController {
 
     private final ProjectUseCase projectUseCase;
@@ -72,4 +73,13 @@ public class ProjectController {
         return new ResponseEntity<>(tasks,HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/getAllTasks",method = RequestMethod.GET)
+    public ResponseEntity<Object> findAllTaskByProject(){
+        var tasks=taskUseCase.findAllTasks();
+        if (tasks==null){
+            String message="The requested resource was not found";
+            return new ResponseEntity<>(message,HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(tasks,HttpStatus.OK);
+    }
 }
