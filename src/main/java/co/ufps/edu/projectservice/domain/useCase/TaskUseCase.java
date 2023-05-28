@@ -1,5 +1,6 @@
 package co.ufps.edu.projectservice.domain.useCase;
 
+import co.ufps.edu.projectservice.domain.model.Status;
 import co.ufps.edu.projectservice.domain.model.Task;
 import co.ufps.edu.projectservice.domain.model.gateways.TaskGateway;
 
@@ -23,5 +24,6 @@ public class TaskUseCase {
 
     public List<Task>findAllTaskById(Long taskId){return gateway.findAllTasksById(taskId);}
 
+    public void updateTaskStatus(Status status, Long id){ gateway.updateTaskStatus(status,id);}
 
 }

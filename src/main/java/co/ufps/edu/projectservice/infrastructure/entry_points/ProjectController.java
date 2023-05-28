@@ -1,6 +1,7 @@
 package co.ufps.edu.projectservice.infrastructure.entry_points;
 
 import co.ufps.edu.projectservice.domain.model.Project;
+import co.ufps.edu.projectservice.domain.model.Task;
 import co.ufps.edu.projectservice.domain.useCase.ProjectUseCase;
 import co.ufps.edu.projectservice.domain.useCase.TaskUseCase;
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,7 @@ public class ProjectController {
 
     @RequestMapping(path = "/getAllProjectsById",method = RequestMethod.POST)
     public ResponseEntity<Object> findAllProjectsById(@RequestBody List<Long>projectsId){
+        System.err.println(projectsId);
         var projects=projectUseCase.findAllProjectsById(projectsId);
         if (projects==null){
             String message="The requested resource was not found";
@@ -74,7 +76,7 @@ public class ProjectController {
     }
 
     @RequestMapping(path = "/getAllTasks",method = RequestMethod.GET)
-    public ResponseEntity<Object> findAllTaskByProject(){
+    public ResponseEntity<Object> findAllTask(){
         var tasks=taskUseCase.findAllTasks();
         if (tasks==null){
             String message="The requested resource was not found";
@@ -82,4 +84,16 @@ public class ProjectController {
         }
         return new ResponseEntity<>(tasks,HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/updateTaskState",method = RequestMethod.PUT)
+    public ResponseEntity<Object> updateTaskState(@RequestBody Task task){
+        if (task==null || task.getId()==null || task.getStatus()==null){
+            String message="Bad request";
+            return new ResponseEntity<>(message,HttpStatus.BAD_REQUEST);
+        }
+        taskUseCase.updateTaskStatus(task.getStatus(),task.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 }

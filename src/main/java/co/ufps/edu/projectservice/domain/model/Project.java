@@ -11,16 +11,28 @@ public class Project {
     private LocalDateTime dateCreation;
     private LocalDateTime dateFinished;
     private List<Task>tasks;
+    private Double projectPercentaje;
 
     public Project() {
     }
 
-    public Project(String title, String description, LocalDateTime dateCreation, LocalDateTime dateFinished, List<Task> tasks) {
+    public Project(String title, String description, LocalDateTime dateCreation, LocalDateTime dateFinished, List<Task> tasks, Double projectPercentaje) {
         this.title = title;
         this.description = description;
         this.dateCreation = dateCreation;
         this.dateFinished = dateFinished;
         this.tasks = tasks;
+        this.projectPercentaje = projectPercentaje;
+    }
+
+    public void calculateProjectPercentaje(){
+        Integer taskDone=0;
+        for(Task task:this.tasks){
+            if (task.getStatus().getId().equals(4)){
+                taskDone++;
+            }
+        }
+         this.projectPercentaje= (double) (taskDone/this.tasks.size());
     }
 
     public String getTitle() {
@@ -72,4 +84,11 @@ public class Project {
     }
 
 
+    public Double getProjectPercentaje() {
+        return projectPercentaje;
+    }
+
+    public void setProjectPercentaje(Double projectPercentaje) {
+        this.projectPercentaje = projectPercentaje;
+    }
 }
